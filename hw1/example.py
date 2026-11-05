@@ -31,7 +31,7 @@ H = Symbol('H',positive = True)
 eq1 = dsol_cyl.subs({h:H,t:0})
 display(eq1)
 
-sol1 = solve(eq1, C1)
+sol1 = solveset(eq1, C1)
 display(sol1)
 
 C2 = tuple(sol1)[1]
