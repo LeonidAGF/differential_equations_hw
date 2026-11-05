@@ -22,10 +22,10 @@ p1 = plot(show=False)
 for c in [-1, 0, 0.25, 0.5, 1, 2]:
     par[k] = c
     ds = dsol_cyl.rhs.subs(par)
-    p = plot(ds, (t,0,120),show=False)
+    p = plot(ds, (t,0,120),show=False, label=f'k = {c}')
     p1.extend(p)
 
+p1.legend = True
 p1.xlabel='Время'
 p1.ylabel='Высота'
 p1.show()
-
