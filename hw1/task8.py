@@ -4,7 +4,7 @@ from numpy import arange
 import matplotlib.pyplot as plt
 
 signa, g, t, r0,k = symbols('signa g t r0 k',positive = True)
-display(signa, g, t, S)
+display(signa, g, t)
 h = Function('h')(t)
 display(h)
 h_ = Derivative(h, t)
@@ -16,14 +16,16 @@ display(dsol_cyl)
 
 C1 = Symbol('C1')
 
-par = {g:9.8, signa:0.1,k:10.0,C1:0.0,r0:1}
+par = {g:9.8, signa:0.1,k:10.0,C1:10.0,r0:1}
 p1 = plot(show=False)
 
-for c in range(-20,21,2):
-    par['k'] = c
+for c in [-1, 0, 0.25, 0.5, 1, 2]:
+    par[k] = c
     ds = dsol_cyl.rhs.subs(par)
-    p = plot(ds, (t,-120,120),show=False)
+    p = plot(ds, (t,0,120),show=False)
     p1.extend(p)
 
+p1.xlabel='Время'
+p1.ylabel='Высота'
 p1.show()
 
