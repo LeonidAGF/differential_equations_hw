@@ -36,7 +36,7 @@ display(T1)
 par = {g: 9.8, signa: 0.1, k: 1, r0: 10}
 p2 = plot(show=False)
 
-for ht in arange(1, 21, 1):
+for ht in range(1, 21, 1):
     par[H] = float(ht)
     ds = dsol_cyl_H.rhs.subs(par)
     t1 = float(ds.subs(h, 0))
