@@ -3,13 +3,13 @@ from IPython.display import display
 from numpy import arange
 import matplotlib.pyplot as plt
 
-signa, g, h, r0,r1, k = symbols('signa g h r0 r1 k', positive=True)
+signa, g, h, r0, k = symbols('signa g h r0 k', positive=True)
 H = Symbol('H', positive=True)
 
 t = Function('t')(h)
 t_ = Derivative(t, h)
 
-de = Eq(pi*((r1-(((r1-r0)/H)*h))**2), -signa*sqrt(2*g*h)*t_)
+de = Eq(pi*(2*r0*h - h*h), -signa*sqrt(2*g*h)*t_)
 
 display(de)
 dsol_cyl = dsolve(de, t)
@@ -33,7 +33,7 @@ display(dsol_cyl_H)
 T1 = dsol_cyl_H.rhs
 display(T1)
 
-par = {g: 9.8, signa: 0.1, k: 1, r0: 1}
+par = {g: 9.8, signa: 0.1, k: 1, r0: 10}
 p2 = plot(show=False)
 
 for ht in arange(1, 21, 1):
